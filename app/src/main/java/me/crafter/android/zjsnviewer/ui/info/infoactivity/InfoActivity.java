@@ -1,8 +1,10 @@
 package me.crafter.android.zjsnviewer.ui.info.infoactivity;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.crafter.android.zjsnviewer.R;
+import me.crafter.android.zjsnviewer.ZjsnApplication;
 import me.crafter.android.zjsnviewer.config.Storage;
 import me.crafter.android.zjsnviewer.service.task.UpdateTask;
 import me.crafter.android.zjsnviewer.ui.time.BuildTimeActivity;
@@ -125,8 +128,25 @@ public class InfoActivity extends FragmentActivity {
         initData();
         initView();
         initEven();
+
+        RefreshReceive receive = new RefreshReceive();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("RefreshInfo");
+        registerReceiver(receive, filter);
     }
 
+    public class RefreshReceive extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            refreshAllView();
+        }
+    }
+
+    public static void refreshInfoActivity(){
+        Intent intent = new Intent();
+        intent.setAction("RefreshInfo");
+        ZjsnApplication.getAppContext().sendBroadcast(intent);
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -324,6 +344,7 @@ public class InfoActivity extends FragmentActivity {
             }
         }
     }
+
 
 
     private void refreshAllView(){

@@ -20,6 +20,7 @@ import java.util.zip.InflaterInputStream;
 
 import me.crafter.android.zjsnviewer.config.Storage;
 import me.crafter.android.zjsnviewer.ZjsnApplication;
+import me.crafter.android.zjsnviewer.ui.info.infoactivity.InfoActivity;
 
 public class NetworkManager {
 
@@ -181,7 +182,7 @@ public class NetworkManager {
                 }
                 in.close();
                 if (response.contains("\"eid\"")){
-                    Log.i("Session", "get eid when get reward.");
+                    Log.i("Session", "get eid");
                 }
 
             }catch (Exception ex) {
@@ -249,8 +250,10 @@ public class NetworkManager {
         if (response.contains("\"eid\"")){
             Log.i("autoExplore()", "get eid when auto explore.");
             return false;
+        } else {
+            DockInfo.parseExplore(response);
+            return true;
         }
-        return true;
     }
     public static void initServer(){
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ZjsnApplication.getAppContext());
@@ -287,7 +290,7 @@ public class NetworkManager {
         }
         Log.i("NetworkManager", "url_login:" + url_login);
     }
-    public static void updateDockInfo(){
+    public static boolean updateDockInfo(){
         initServer();
         Log.i("NetworkManager", "updateDockInfo()");
         Log.i("NetworkManager", "Unix: " + getCurrentUnixTime());
@@ -297,31 +300,33 @@ public class NetworkManager {
         if (!on){
             Storage.str_tiduName = Storage.str_notOn[Storage.language];
             DockInfo.updateInterval = 15;
-            return;
+            return false;
         }
         if (ZjsnState.getZjsnState() == 0 && prefs.getBoolean("auto_run", true)){
             DockInfo.updateInterval = 15;
             Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
-            return;
+            return false;
         }
         boolean success;
         // STEP 1 PASSPORT LOGIN
         success = getAccountCookie();
-        if (!success) return;
+        if (!success) return false;
         // STEP 2 UID SERVER LOGIN
         success = login();
-        if (!success) return;
+        if (!success) return false;
         // STEP 3 GET USER DATA
         success =initGame();
-        if (!success) return;
-        boolean explored = autoExplore();
-        if (explored) initGame();
+        if (!success) return false;
+        autoExplore();
+        InfoActivity.refreshInfoActivity();
+        return true;
     }
     public static boolean getAccountCookie(){
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ZjsnApplication.getAppContext());
         String error = "";
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
+        if (username.equals("none")|password.equals("none")) return false;
         String url;
         url = url_login + username+"/"+password;
         OperateSession workingSession = new OperateSession(url);
@@ -349,7 +354,7 @@ public class NetworkManager {
         String response = workingSession.open();
 //          Log.i("NetworkManager", response.toString());
         if (response.equals("")) return false;
-        boolean success = DockInfo.parseDockInfo(response);
+        boolean success = DockInfo.parseInitGame(response);
         if (!success) return false;
         Log.i("NetworkManager", "initGame successful");
         DockInfo.updateInterval += 75;

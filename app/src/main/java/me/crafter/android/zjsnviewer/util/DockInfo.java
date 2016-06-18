@@ -269,7 +269,7 @@ public class DockInfo {
         return ret;
     }
 
-    public static boolean parseDockInfo(String response){
+    public static boolean parseInitGame(String response){
         JSONObject data;
         String error;
         try {
@@ -288,14 +288,7 @@ public class DockInfo {
             level = data.getJSONObject("userVo").getString("level");
     
             JSONObject pveExploreVo = data.getJSONObject("pveExploreVo");
-            JSONArray levels = pveExploreVo.getJSONArray("levels");
-//            boolean shouldExplore = false;
-            for (int i = 0; i < levels.length(); i++){
-                JSONObject level = levels.getJSONObject(i);
-                int endTime = level.getInt("endTime");
-                dockTravelTime[level.getInt("fleetId")-1] = endTime;
-                exploreID[level.getInt("fleetId")-1] = level.getInt("exploreId");
-            }
+            parseExploreJSON(pveExploreVo);
             JSONArray dockVo = data.getJSONArray("dockVo");
             JSONArray repairDockVo = data.getJSONArray("repairDockVo");
             JSONArray equipmentDockVo = data.getJSONArray("equipmentDockVo");
@@ -331,6 +324,30 @@ public class DockInfo {
         }
         return true;
     }
+
+    public static boolean parseExplore(String response){
+        try {
+            JSONObject data = new JSONObject(response);
+            JSONObject pveExploreVo = data.getJSONObject("pveExploreVo");
+            parseExploreJSON(pveExploreVo);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static void parseExploreJSON(JSONObject pveExploreVo) throws JSONException {
+        JSONArray levels = pveExploreVo.getJSONArray("levels");
+//            boolean shouldExplore = false;
+        for (int i = 0; i < levels.length(); i++){
+            JSONObject level = levels.getJSONObject(i);
+            int endTime = level.getInt("endTime");
+            dockTravelTime[level.getInt("fleetId")-1] = endTime;
+            exploreID[level.getInt("fleetId")-1] = level.getInt("exploreId");
+        }
+    }
+
     //request an update, with a interval of 15 seconds checked
     public static boolean requestUpdate(){
         boolean ret = true;

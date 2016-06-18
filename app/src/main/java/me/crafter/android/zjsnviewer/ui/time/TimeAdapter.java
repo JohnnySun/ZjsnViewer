@@ -74,7 +74,7 @@ public class TimeAdapter extends BaseExpandableListAdapter{
             view = LayoutInflater.from(context).inflate(R.layout.item_time, null);
         }
 
-        ((TextView)ViewHolder.get(view, R.id.tv_time)).setText(JsonUtil.long2hms(parent.get(i)));
+        ((TextView)ViewHolder.get(view, R.id.tv_time)).setText(JsonUtil.long2hms_digit(parent.get(i)));
         return view;
     }
 
