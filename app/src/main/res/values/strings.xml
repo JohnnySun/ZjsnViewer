@@ -54,4 +54,8 @@
     <string name="settings_yes">确定</string>
     <string name="settings_no">取消</string>
 
+    <string name="web_site">攻略站点</string>
+    <string name="build_time_info">建造时间</string>
+    <string name="make_time_info">开发时间</string>
+
 </resources>

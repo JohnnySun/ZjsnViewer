@@ -5,7 +5,7 @@
         android:summary="强制服务器/黑科技"
         android:key="go_pref_advanced">
         <intent android:targetPackage="me.crafter.android.zjsnviewer"
-            android:targetClass="me.crafter.android.zjsnviewer.SettingsBlack"/>
+            android:targetClass="me.crafter.android.zjsnviewer.ui.preference.black.SettingsBlack"/>
     </Preference>
 
     <Preference

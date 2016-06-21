@@ -15,7 +15,7 @@
         android:summary="@string/pref_summary_account"
         android:key="go_pref_general">
             <intent android:targetPackage="me.crafter.android.zjsnviewer"
-            android:targetClass="me.crafter.android.zjsnviewer.SettingsGeneral"/>
+            android:targetClass="me.crafter.android.zjsnviewer.ui.preference.general.SettingsGeneral"/>
     </Preference>
 
     <Preference
@@ -23,7 +23,7 @@
         android:summary="@string/pref_summary_data_sync"
         android:key="go_pref_notification">
         <intent android:targetPackage="me.crafter.android.zjsnviewer"
-            android:targetClass="me.crafter.android.zjsnviewer.SettingsNotification"/>
+            android:targetClass="me.crafter.android.zjsnviewer.ui.preference.notification.SettingsNotification"/>
     </Preference>
 
     <Preference
@@ -31,7 +31,7 @@
         android:summary="@string/pref_summary_notification"
         android:key="go_pref_sync">
         <intent android:targetPackage="me.crafter.android.zjsnviewer"
-            android:targetClass="me.crafter.android.zjsnviewer.SettingsSync"/>
+            android:targetClass="me.crafter.android.zjsnviewer.ui.preference.sync.SettingsSync"/>
     </Preference>
 
     <Preference
@@ -39,7 +39,7 @@
         android:summary="@string/pref_summary_customize"
         android:key="go_pref_customize">
         <intent android:targetPackage="me.crafter.android.zjsnviewer"
-            android:targetClass="me.crafter.android.zjsnviewer.SettingsCustomize"/>
+            android:targetClass="me.crafter.android.zjsnviewer.ui.preference.customize.SettingsCustomize"/>
     </Preference>
 
 </PreferenceScreen>

@@ -1,5 +1,0 @@
-package me.crafter.android.zjsnviewer;
-
-public enum State {
-    DEFAULT, UNKNOWN, INTERRUPT, CONNECTION_FAIL, NO_INTERNET, CONNECTION_RESET, PARSE_ERROR, NO_UPDATE_FOUND, UPDATE_FOUND;
-}

@@ -1,4 +1,3 @@
-## 当前处于实验板分支，此可能含有部分有争议实验特征，请谨慎使用此版本。
 Travis CI: [![Travis CI](https://travis-ci.org/JohnnySun/ZjsnViewer.svg?branch=master)](https://travis-ci.org/JohnnySun/ZjsnViewer)
 原作者貌似不再支持，fork来此工程进行继续开发。
 ---

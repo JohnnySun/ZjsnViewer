@@ -19,7 +19,7 @@
             <android.support.v7.widget.Toolbar
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/toobar"
+                android:id="@+id/toolbar"
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -276,6 +276,32 @@
                     android:padding="15dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/pref_auto_on" />
+                <TextView
+                    android:id="@+id/tv_goto_build_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/background_color"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="15dp"
+                    android:gravity="center|start"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/build_time_info"
+                    android:textColor="@color/font_black"/>
+                <TextView
+                    android:id="@+id/tv_goto_make_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/background_color"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="15dp"
+                    android:gravity="center|start"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/make_time_info"
+                    android:textColor="@color/font_black"/>
 
                 <TextView
                     android:id="@+id/tv_web"
@@ -288,9 +314,8 @@
                     android:padding="15dp"
                     android:gravity="center|start"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/unavailable"
-                    android:textColor="@color/font_black"
-                    android:visibility="gone"/>
+                    android:text="@string/web_site"
+                    android:textColor="@color/font_black"/>
 
             </LinearLayout>
 

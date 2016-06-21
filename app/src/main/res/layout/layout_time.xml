@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_white">
+    android:orientation="vertical">
+
+
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,8 +19,10 @@
         app:titleTextColor="@color/font_white"
         app:navigationIcon="?attr/homeAsUpIndicator"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_web"
+    <ExpandableListView
+        android:id="@+id/elv_build_time"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:groupIndicator="@null"/>
+
 </LinearLayout>

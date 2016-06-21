@@ -7,13 +7,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".zjsApplication"
+        android:name=".ZjsnApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <receiver
-            android:name=".Widget_Repair"
+            android:name=".ui.widget.Widget_Repair"
             android:label="@string/repair_widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -24,7 +24,7 @@
                 android:resource="@xml/widget__repair_info" />
         </receiver>
         <receiver
-            android:name=".Widget_Build"
+            android:name=".ui.widget.Widget_Build"
             android:label="@string/build_widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -35,7 +35,7 @@
                 android:resource="@xml/widget__build_info" />
         </receiver>
         <receiver
-            android:name=".Widget_Make"
+            android:name=".ui.widget.Widget_Make"
             android:label="@string/make_widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -46,7 +46,7 @@
                 android:resource="@xml/widget__make_info" />
         </receiver>
         <receiver
-            android:name=".Widget_Travel"
+            android:name=".ui.widget.Widget_Travel"
             android:label="@string/travel_widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -57,7 +57,7 @@
                 android:resource="@xml/widget__travel_info" />
         </receiver>
         <receiver
-            android:name=".Widget_Main"
+            android:name=".ui.widget.Widget_Main"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -68,19 +68,19 @@
                 android:resource="@xml/widget__main_info" />
         </receiver>
 
-        <service android:name=".TimerService">
+        <service android:name=".service.service.TimerService">
 
         </service>
 
         <receiver
-            android:name=".ScreenReceiver"
+            android:name=".service.receiver.ScreenReceiver"
             android:enabled="true"
             android:exported="true">
 
         </receiver>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".ui.preference.unknow.SettingsActivity"
             android:label="@string/title_activity_settings">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -89,63 +89,63 @@
 
         <!-- Main Class -->
         <activity
-            android:name=".ZjsnViewer"
+            android:name=".ui.preference.main.ZjsnViewer"
             android:label="@string/title_activity_main">
         </activity>
 
         <!-- Settings General -->
         <activity
-            android:name=".SettingsGeneral"
+            android:name=".ui.preference.general.SettingsGeneral"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ZjsnViewer">
+            android:parentActivityName=".ui.preference.main.ZjsnViewer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
+                android:value=".ui.preference.main.ZjsnViewer" />
             >
         </activity>
 
         <!-- Settings Notification -->
         <activity
-            android:name=".SettingsNotification"
+            android:name=".ui.preference.notification.SettingsNotification"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ZjsnViewer">
+            android:parentActivityName=".ui.preference.main.ZjsnViewer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
+                android:value=".ui.preference.main.ZjsnViewer" />
             >
         </activity>
 
         <!-- Settings Sync -->
         <activity
-            android:name=".SettingsSync"
+            android:name=".ui.preference.sync.SettingsSync"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ZjsnViewer">
+            android:parentActivityName=".ui.preference.main.ZjsnViewer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
+                android:value=".ui.preference.main.ZjsnViewer" />
             >
         </activity>
 
         <!-- Settings Customize -->
         <activity
-            android:name=".SettingsCustomize"
+            android:name=".ui.preference.customize.SettingsCustomize"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ZjsnViewer">
+            android:parentActivityName=".ui.preference.main.ZjsnViewer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
+                android:value=".ui.preference.main.ZjsnViewer" />
             >
         </activity>
         <activity
-            android:name=".SettingsBlack"
+            android:name=".ui.preference.black.SettingsBlack"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ZjsnViewer">
+            android:parentActivityName=".ui.preference.main.ZjsnViewer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
+                android:value=".ui.preference.main.ZjsnViewer" />
             >
         </activity>
-        <activity android:name=".InfoActivity">
+        <activity android:name=".ui.info.infoactivity.InfoActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -154,7 +154,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".WebActivity">
+        <activity android:name=".ui.web.WebActivity">
+
+        </activity>
+
+        <activity android:name=".ui.time.BuildTimeActivity">
+
+        </activity>
+
+        <activity android:name=".ui.time.MakeTimeActivity">
 
         </activity>
     </application>
